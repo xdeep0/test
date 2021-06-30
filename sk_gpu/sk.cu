@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
 	for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
 	{
     	printf("No.%d Index.", i);
-    	print_suffix(data, SA[i]);
+    	print_suffix(data, h_SA[i]);
 	}
 	// ----------
 
