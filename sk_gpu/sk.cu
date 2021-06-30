@@ -59,6 +59,14 @@ int main(int argc, char* argv[])
 	cudaEventSynchronize(stop);
 	cudaEventElapsedTime(&milliseconds, start, stop);
 
+	// origin ---
+	for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
+	{
+    	printf("No.%d Index.", i);
+    	print_suffix(data, SA[i]);
+	}
+	// ----------
+
 	printf("GPU construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, milliseconds / 1000);
 
 	cudaEventDestroy(start);
