@@ -136,11 +136,11 @@ int main(int argc, char* argv[])
 	runTime = (end - start) / (double) CLOCKS_PER_SEC ;   //run time
 
 
-	//for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
-	//{
-	///	printf("No.%d Index.", i);
-	//	print_suffix(data, SA[i]);
-	//}
+	for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
+	{
+    	printf("No.%d Index.", i);
+    	print_suffix(data, SA[i]);
+	}
 
 	printf("CPU linear construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, runTime);
 
