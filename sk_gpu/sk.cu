@@ -102,7 +102,7 @@ int main(int argc, char* argv[])
 	h_BWT = d_BWT;
 	printf("BWT\n");
 	for (i = 0; i < n; i++) {
-		printf("%c", h_BWT[i]);
+		// printf("%c", h_BWT[i]);
 	}
 	putchar('\n');
 	// ---------------------------------------------
