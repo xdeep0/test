@@ -21,7 +21,7 @@ __global__ void shin_bwt(char* BWT, int* SA, char* T, int n) {
 	if (SA[idx] == 0) {
 		BWT[idx] = '$';
 	} else {
-		BWT[idx] = T[SA[idx] - 1];
+		// BWT[idx] = T[SA[idx] - 1];
 	}
 	// BWT[idx] = SA[idx] == 0 ? '$' : T[SA[idx] - 1];
 }
@@ -77,11 +77,11 @@ int main(int argc, char* argv[])
 	cudaEventElapsedTime(&milliseconds, start, stop);
 
 	// shin print -----------------------
-	for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
-	{
-    	printf("No.%d Index.", i);
-    	print_suffix(data, h_SA[i]);
-	}
+	// for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
+	// {
+    // 	printf("No.%d Index.", i);
+    // 	print_suffix(data, h_SA[i]);
+	// }
 	// -------------------------------
 
 	// shin bwt ------------------------------------
@@ -92,8 +92,8 @@ int main(int argc, char* argv[])
 	// putchar('\n');
 	// ---------------------------------------------
 	// shin bwt parallel ---------------------------
-	thrust::host_vector<char> h_BWT(n + 3);
-	thrust::device_vector<char>d_BWT;
+	thrust::host_vector<char> h_BWT(n + 1);
+	thrust::device_vector<char> d_BWT;
 	puts("aaa");
 	d_BWT = h_BWT;
 	puts("bbb");
@@ -105,6 +105,7 @@ int main(int argc, char* argv[])
 	puts("ccc");
 	// h_BWT = d_BWT;
 	puts("ddd");
+	printf("T: %s\n", data);
 	printf("BWT\n");
 	for (i = 0; i < n; i++) {
 		printf("%c", h_BWT[i]);
@@ -112,7 +113,7 @@ int main(int argc, char* argv[])
 	putchar('\n');
 	// ---------------------------------------------
 
-	printf("GPU construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, milliseconds / 1000);
+	// printf("GPU construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, milliseconds / 1000);
 
 	cudaEventDestroy(start);
 	cudaEventDestroy(stop);
