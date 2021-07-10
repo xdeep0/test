@@ -35,6 +35,9 @@ int main(int argc, char* argv[])
 	data = (char *)malloc((n + 1)*sizeof(char));
 
 	read_data(filename, data, n);				//read data set from the local file
+	// shin insert '$' to data ------
+	data[n - 1] = '$';
+	// ------------------------------
 
 	thrust::host_vector<int> h_inp(n + 3);
 	thrust::host_vector<int> h_SA(n + 3, 0);
@@ -59,7 +62,7 @@ int main(int argc, char* argv[])
 	cudaEventSynchronize(stop);
 	cudaEventElapsedTime(&milliseconds, start, stop);
 
-	// shin  -----------------------
+	// shin print -----------------------
 	for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
 	{
     	printf("No.%d Index.", i);
@@ -67,7 +70,7 @@ int main(int argc, char* argv[])
 	}
 	// -------------------------------
 
-	// BWT shin ------------------------------------
+	// shin bwt ------------------------------------
 	char *bwt_t = (char *)malloc((n + 1)*sizeof(char));
 	for (i = 0; i < n; i++) {
 		printf("%c", h_SA[i] == 0 ? '$' : data[h_SA[i]-1]);
