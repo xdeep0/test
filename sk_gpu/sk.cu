@@ -91,8 +91,8 @@ int main(int argc, char* argv[])
 	// putchar('\n');
 	// ---------------------------------------------
 	// shin bwt parallel ---------------------------
-	thrust::host_vector<char> h_BWT(n + 3);
-	thrust::device_vector<char> d_BWT(h_BWT);
+	thrust::host_vector<char> h_BWT(n + 3, 0);
+	thrust::device_vector<char> d_BWT;
 	puts("aaa");
 	d_BWT = h_BWT;
 	puts("bbb");
