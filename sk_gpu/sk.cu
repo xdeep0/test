@@ -72,8 +72,6 @@ int main(int argc, char* argv[])
 	cudaEventRecord(start);
 	suffixArray(d_inp, d_SA, n, MAX_ALPHA);	        //dc3/skew algorithm
 
-	h_SA = d_SA;
-
 	// shin bwt parallel ---------------------------
 	thrust::host_vector<char> h_BWT(n + 1);
 	thrust::device_vector<char> d_BWT;
@@ -99,6 +97,8 @@ int main(int argc, char* argv[])
 	}
 	putchar('\n');
 	// ---------------------------------------------
+
+	h_SA = d_SA;
 
 	cudaEventRecord(stop);
 	cudaEventSynchronize(stop);
