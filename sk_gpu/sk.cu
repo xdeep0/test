@@ -21,7 +21,7 @@ __global__ void shin_bwt(char* BWT, int* SA, char* T, int n) {
 	if (SA[idx] == 0) {
 		BWT[idx] = '$';
 	} else {
-		// BWT[idx] = T[SA[idx] - 1];
+		BWT[idx] = T[SA[idx] - 1];
 	}
 	// BWT[idx] = SA[idx] == 0 ? '$' : T[SA[idx] - 1];
 }
@@ -106,7 +106,11 @@ int main(int argc, char* argv[])
 	// h_BWT = d_BWT;
 	puts("ddd");
 	printf("T: %s\n", data);
-	printf("BWT\n");
+	printf("SA:\n");
+	for (i = 0; i < n; i++) {
+		printf("%d ", h_SA[i]);
+	}
+	printf("\nBWT:\n");
 	for (i = 0; i < n; i++) {
 		printf("%c", h_BWT[i]);
 	}
