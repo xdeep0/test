@@ -12,6 +12,13 @@ void read_data(char *filename, char *buffer, int num){
 }
 
 
+// shin parallel BWT
+__global__ void shin_bwt(char* BWT, int* T, int* SA, int n) {
+	int idx = blockIdx.x * blockDim.x + threadIdx.x;
+	// h_SA[i] == 0 ? '$' : data[h_SA[i]-1]
+	BWT[idx] = SA[idx] == 0 ? '$' : T[SA[idx] - 1];
+}
+
 
 int main(int argc, char* argv[])
 {
@@ -71,11 +78,19 @@ int main(int argc, char* argv[])
 	// -------------------------------
 
 	// shin bwt ------------------------------------
-	char *bwt_t = (char *)malloc((n + 1)*sizeof(char));
-	for (i = 0; i < n; i++) {
-		printf("%c", h_SA[i] == 0 ? '$' : data[h_SA[i]-1]);
-	}
-	putchar('\n');
+	// char *bwt_t = (char *)malloc((n + 1)*sizeof(char));
+	// for (i = 0; i < n; i++) {
+	// 	printf("%c", h_SA[i] == 0 ? '$' : data[h_SA[i]-1]);
+	// }
+	// putchar('\n');
+	// ---------------------------------------------
+	// shin bwt parallel ---------------------------
+	thrust::host_vector<char> h_BWT(n + 3);
+	thrust::device_vector<char>d_BWT;
+	d_BWT = h_BWT;
+	shin_bwt<<<(n + 1024 - 1) / 1024, 1024>>>(d_BWT, data, h_SA, n);
+	h_BWT = d_BWT;
+	printf("BWT\n%s\n", h_BWT);
 	// ---------------------------------------------
 
 	printf("GPU construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, milliseconds / 1000);
