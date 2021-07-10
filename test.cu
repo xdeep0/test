@@ -9,7 +9,7 @@
 __global__ void test(char *A, char *B, int n) {
 	int index = blockIdx.x * blockDim.x + threadIdx.x;
 	if (index >= n) return;
-    B[index] = A[index];
+    if (1) B[index] = A[index];
 }
 
 int main () {
