@@ -18,7 +18,7 @@ __global__ void shin_bwt(char* BWT, int* SA, char* T, int n) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
 	if (idx >= n) return;
 	// h_SA[i] == 0 ? '$' : data[h_SA[i]-1]
-	if (SA[idx] != 0) BWT[idx] = T[SA[idx] - 1];
+	if (SA[idx] > 0) BWT[idx] = T[SA[idx] - 1];
 	// if (SA[idx] == 0) {
 	// 	BWT[idx] = '$';
 	// } else {
@@ -73,25 +73,7 @@ int main(int argc, char* argv[])
 	suffixArray(d_inp, d_SA, n, MAX_ALPHA);	        //dc3/skew algorithm
 
 	h_SA = d_SA;
-	cudaEventRecord(stop);
-	cudaEventSynchronize(stop);
-	cudaEventElapsedTime(&milliseconds, start, stop);
 
-	// shin print -----------------------
-	// for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
-	// {
-    // 	printf("No.%d Index.", i);
-    // 	print_suffix(data, h_SA[i]);
-	// }
-	// -------------------------------
-
-	// shin bwt ------------------------------------
-	// char *bwt_t = (char *)malloc((n + 1)*sizeof(char));
-	// for (i = 0; i < n; i++) {
-	// 	printf("%c", h_SA[i] == 0 ? '$' : data[h_SA[i]-1]);
-	// }
-	// putchar('\n');
-	// ---------------------------------------------
 	// shin bwt parallel ---------------------------
 	thrust::host_vector<char> h_BWT(n + 1);
 	thrust::device_vector<char> d_BWT;
@@ -117,6 +99,27 @@ int main(int argc, char* argv[])
 	}
 	putchar('\n');
 	// ---------------------------------------------
+
+	cudaEventRecord(stop);
+	cudaEventSynchronize(stop);
+	cudaEventElapsedTime(&milliseconds, start, stop);
+
+	// shin print -----------------------
+	// for(i = 0 ; i < n ; i++)					//print sorted suffixes from data set
+	// {
+    // 	printf("No.%d Index.", i);
+    // 	print_suffix(data, h_SA[i]);
+	// }
+	// -------------------------------
+
+	// shin bwt ------------------------------------
+	// char *bwt_t = (char *)malloc((n + 1)*sizeof(char));
+	// for (i = 0; i < n; i++) {
+	// 	printf("%c", h_SA[i] == 0 ? '$' : data[h_SA[i]-1]);
+	// }
+	// putchar('\n');
+	// ---------------------------------------------
+
 
 	// printf("GPU construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, milliseconds / 1000);
 
