@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
 	thrust::host_vector<char> h_BWT(n + 3);
 	thrust::device_vector<char>d_BWT;
 	d_BWT = h_BWT;
-	shin_bwt<<<(n + 1024 - 1) / 1024, 1024>>>(d_BWT, h_SA, data);
+	shin_bwt<<<(n + 1024 - 1) / 1024, 1024>>>(d_BWT, d_SA, data);
 	h_BWT = d_BWT;
 	printf("BWT\n%s\n", h_BWT);
 	// ---------------------------------------------
