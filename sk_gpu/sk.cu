@@ -93,7 +93,9 @@ int main(int argc, char* argv[])
 	// shin bwt parallel ---------------------------
 	thrust::host_vector<char> h_BWT(n + 3);
 	thrust::device_vector<char>d_BWT;
+	puts("aaa");
 	d_BWT = h_BWT;
+	puts("bbb");
 	char *shin_pd_BWT = thrust::raw_pointer_cast(&d_BWT[0]);
 	int *shin_pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
 	shin_bwt<<<(n + 1024 - 1) / 1024, 1024>>>(shin_pd_BWT, shin_pd_SA, data);
