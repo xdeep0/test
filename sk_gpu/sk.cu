@@ -16,7 +16,7 @@ void read_data(char *filename, char *buffer, int num){
 // __global__ void shin_bwt(thrust::device_vector<char>& BWT, thrust::device_vector<int>& SA, char* T) {
 __global__ void shin_bwt(char* BWT, int* SA, char* T, int n) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
-	if (index >= n) return;
+	if (idx >= n) return;
 	// h_SA[i] == 0 ? '$' : data[h_SA[i]-1]
 	if (SA[idx] == 0) {
 		BWT[idx] = '$';
