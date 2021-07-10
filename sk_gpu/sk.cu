@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
 	// BWT shin ------------------------------------
 	char *bwt_t = (char *)malloc((n + 1)*sizeof(char));
 	for (i = 0; i < n; i++) {
-		printf("%c", h_SA[i] == 0 ? '$', data[h_SA[i]-1]);
+		printf("%c", h_SA[i] == 0 ? '$' : data[h_SA[i]-1]);
 	}
 	putchar('\n');
 	// ---------------------------------------------
