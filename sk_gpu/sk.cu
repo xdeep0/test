@@ -98,7 +98,11 @@ int main(int argc, char* argv[])
 	int *shin_pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
 	shin_bwt<<<(n + 1024 - 1) / 1024, 1024>>>(shin_pd_BWT, shin_pd_SA, data);
 	h_BWT = d_BWT;
-	printf("BWT\n%s\n", h_BWT);
+	printf("BWT\n");
+	for (i = 0; i < n; i++) {
+		printf("%c", h_BWT[i]);
+	}
+	putchar('\n');
 	// ---------------------------------------------
 
 	printf("GPU construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, milliseconds / 1000);
