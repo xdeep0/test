@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
 	int *shin_pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
 	shin_bwt<<<(n + 1024 - 1) / 1024, 1024>>>(shin_pd_BWT, shin_pd_SA, data);
 	puts("ccc");
-	h_BWT = d_BWT;
+	// h_BWT = d_BWT;
 	puts("ddd");
 	printf("BWT\n");
 	for (i = 0; i < n; i++) {
