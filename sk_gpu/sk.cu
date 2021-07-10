@@ -18,7 +18,7 @@ __global__ void shin_bwt(char* BWT, int* SA, char* T, int n) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
 	if (idx >= n) return;
 	// h_SA[i] == 0 ? '$' : data[h_SA[i]-1]
-	BWT[idx] = '$';
+	if (SA[idx] != 0) BWT[idx] = T[SA[idx] - 1];
 	// if (SA[idx] == 0) {
 	// 	BWT[idx] = '$';
 	// } else {
