@@ -99,13 +99,15 @@ int main(int argc, char* argv[])
 	puts("bbb");
 	char *shin_pd_BWT = thrust::raw_pointer_cast(&d_BWT[0]);
 	int *shin_pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
-	shin_bwt<<</*(n + 1024 - 1) / 1024*/1, 1024>>>(shin_pd_BWT, shin_pd_SA, data, n);
+    dim3 block(32, 1);
+    dim3 grid((n + block.x - 1) / block.x, 1);
+	shin_bwt<<< grid, block >>>(shin_pd_BWT, shin_pd_SA, data, n);
 	puts("ccc");
 	// h_BWT = d_BWT;
 	puts("ddd");
 	printf("BWT\n");
 	for (i = 0; i < n; i++) {
-		// printf("%c", h_BWT[i]);
+		printf("%c", h_BWT[i]);
 	}
 	putchar('\n');
 	// ---------------------------------------------
