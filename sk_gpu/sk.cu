@@ -16,7 +16,12 @@ void read_data(char *filename, char *buffer, int num){
 __global__ void shin_bwt(thrust::device_vector<char>& BWT, thrust::device_vector<int>& SA, char* T) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
 	// h_SA[i] == 0 ? '$' : data[h_SA[i]-1]
-	BWT[idx] = SA[idx] == 0 ? '$' : T[SA[idx] - 1];
+	if (SA[idx] == 0) {
+		BWT[idx] = '$';
+	} else {
+		BWT[idx] = T[SA[idx] - 1];
+	}
+	// BWT[idx] = SA[idx] == 0 ? '$' : T[SA[idx] - 1];
 }
 
 
