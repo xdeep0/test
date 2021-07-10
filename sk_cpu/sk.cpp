@@ -70,17 +70,20 @@ void radixPass(int* to_be_sorted, int* sorted_suf_arr, int* orig_str, int n, int
 	for (i = 0;  i <= K;  i++) count[i] = 0;
 
 
-	// reset counters
-	for (i = 0;  i < n;  i++){
-		count[orig_str[to_be_sorted[i]]]++;
-	}
+    // reset counters
+    for (i = 0;  i < n;  i++){
+        count[orig_str[to_be_sorted[i]]]++;
+    }
 
-	// count occurrences
-	for (i = 0, sum = 0;  i <= K;  i++) { // exclusive prefix sums
-		t = count[i];  count[i] = sum;  sum += t;
-	}
-	for (i = 0;  i < n;  i++)
-		sorted_suf_arr[count[orig_str[to_be_sorted[i]]]++] = to_be_sorted[i];      // sort
+    // count occurrences
+    for (i = 0, sum = 0;  i <= K;  i++) { // exclusive prefix sums
+        t = count[i];
+        count[i] = sum;
+        sum += t;
+    }
+    for (i = 0;  i < n;  i++) {
+        sorted_suf_arr[count[orig_str[to_be_sorted[i]]]++] = to_be_sorted[i];      // sort
+    }
 }
 
 
