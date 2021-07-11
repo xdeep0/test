@@ -102,9 +102,9 @@ int main(int argc, char* argv[])
 	int *shin_pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
     dim3 block(32, 1);
     dim3 grid((n + block.x - 1) / block.x, 1);
-	// shin_bwt<<< grid, block >>>(shin_pd_BWT, shin_pd_SA, data, n);
+	shin_bwt<<< grid, block >>>(shin_pd_BWT, shin_pd_SA, data, n);
 	puts("aaa");
-	// h_BWT = d_BWT;
+	h_BWT = d_BWT;
 	puts("bbb");
 	printf("T: %s\n", data);
 	printf("SA:\n");
