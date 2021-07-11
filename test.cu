@@ -72,13 +72,15 @@ int main() {
 
     dim3 block(8, 1);
     dim3 grid((n + block.x - 1) / block.x, 1);
-    test<<<grid, block >>>(
+    test<<<grid, block>>>(
         thrust::raw_pointer_cast(&d_A[0]),
         thrust::raw_pointer_cast(&d_B[0]),
         thrust::raw_pointer_cast(&d_C[0]),
         n);
 
-    thrust::host_vector<char> h_B = d_B;
+    // thrust::host_vector<char> h_B = d_B;
+    thrust::host_vector<char> h_B;
+    h_B = d_B;
 
     for (int i = 0; i < n; i++) {
         printf("%c ", h_B[i]);
