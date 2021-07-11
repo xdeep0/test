@@ -117,7 +117,7 @@ int main(int argc, char* argv[])
 	read_data(filename, data, n);				//read data set from the local file
 
 	// shin insert '$' ------------------
-	data[n - 1] = '.';
+	data[n - 1] = 'A';
 	// ----------------------------------
 
 	start = clock();							//record the start time
