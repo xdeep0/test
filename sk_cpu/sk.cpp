@@ -196,7 +196,13 @@ void suffixArray(int* s, int* SA, int n, int K) {
    /////////////////////////////////////////////////////////////
    ///synchronization!!!!!!!
 
+	// shin debug
+	puts("debug 3");
+
 	radixPass(s12 , SA12, s+2, n02, K);
+
+	// shin debug
+	puts("debug 4");
 
 	radixPass(SA12, s12 , s+1, n02, K);
 
