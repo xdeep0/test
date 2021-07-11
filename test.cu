@@ -17,7 +17,7 @@ int main () {
     const int n = 12;
     char A[] = "mississippi$";
 	thrust::host_vector<char> h_B(n);
-	thrust::device_vector<char> d_B;
+	thrust::device_vector<char> d_B = h_B;
 
     // char *T = (char *)malloc((n + 1) * sizeof(char));
     // for (int i = 0; i < n; i++) {
@@ -33,7 +33,7 @@ int main () {
     // int SA[] = {11,10,7,4,1,0,9,8,6,3,5,2};
     int C[] = {11,10,7,4,1,0,9,8,6,3,5,2};
 
-	d_B = h_B;
+	// d_B = h_B;
 
     dim3 block(8, 1);
     dim3 grid((n + block.x - 1) / block.x, 1);
