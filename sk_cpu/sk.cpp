@@ -30,6 +30,8 @@ void merge_suffixes(int * SA0, int * SA12, int * SA, int * s, int * s12, int n0,
 				for (k++;  t < n02;  t++, k++) SA[k] = GetI();
 			}
 		}
+		// shin debug
+		printf("k: %d\n", k);
 	}
 }
 
@@ -232,8 +234,6 @@ void suffixArray(int* s, int* SA, int n, int K) {
 	// merge sorted SA0 suffixes and sorted SA12 suffixes
 	merge_suffixes(SA0, SA12, SA, s, s12, n0, n1, n02, n);
 
-	// shin debug
-	puts("debug 3");
 
 	//printf("End of suffix array !!\n");
 }
