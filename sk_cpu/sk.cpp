@@ -30,8 +30,6 @@ void merge_suffixes(int * SA0, int * SA12, int * SA, int * s, int * s12, int n0,
 				for (k++;  t < n02;  t++, k++) SA[k] = GetI();
 			}
 		}
-		// shin debug
-		printf("k: %d, n: %d\n", k, n);
 	}
 }
 
@@ -118,7 +116,7 @@ int main(int argc, char* argv[])
 
 	read_data(filename, data, n);				//read data set from the local file
 	// shin insert '$' --------------
-	data[n - 1] = '$';
+	data[n - 1] = '\n';
 	// ------------------------------
 
 	start = clock();							//record the start time
