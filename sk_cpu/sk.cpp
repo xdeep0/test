@@ -228,13 +228,12 @@ void suffixArray(int* s, int* SA, int n, int K) {
 
 	radixPass(s0, SA0, s, n0, K);
 
-	// shin debug
-	puts("debug 3");
 
 	// merge sorted SA0 suffixes and sorted SA12 suffixes
 	merge_suffixes(SA0, SA12, SA, s, s12, n0, n1, n02, n);
 
-
+	// shin debug
+	puts("debug 3");
 
 	//printf("End of suffix array !!\n");
 }
