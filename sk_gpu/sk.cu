@@ -72,30 +72,6 @@ int main(int argc, char* argv[])
 	cudaEventRecord(start);
 	suffixArray(d_inp, d_SA, n, MAX_ALPHA);	        //dc3/skew algorithm
 
-	// shin bwt parallel ---------------------------
-	thrust::host_vector<char> h_BWT(n + 1);
-	thrust::device_vector<char> d_BWT;
-	d_BWT = h_BWT;
-	char *shin_pd_BWT = thrust::raw_pointer_cast(&d_BWT[0]);
-	int *shin_pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
-    dim3 block(32, 1);
-    dim3 grid((n + block.x - 1) / block.x, 1);
-	shin_bwt<<< grid, block >>>(shin_pd_BWT, shin_pd_SA, data, n);
-	puts("aaa");
-	// h_BWT = d_BWT;
-	puts("bbb");
-	printf("T: %s\n", data);
-	printf("SA:\n");
-	for (i = 0; i < n; i++) {
-		printf("%d ", h_SA[i]);
-	}
-	printf("\nBWT:\n");
-	for (i = 0; i < n; i++) {
-		printf("%c", h_BWT[i]);
-	}
-	putchar('\n');
-	// ---------------------------------------------
-
 	h_SA = d_SA;
 
 	cudaEventRecord(stop);
@@ -116,6 +92,30 @@ int main(int argc, char* argv[])
 	// 	printf("%c", h_SA[i] == 0 ? '$' : data[h_SA[i]-1]);
 	// }
 	// putchar('\n');
+	// ---------------------------------------------
+
+	// shin bwt parallel ---------------------------
+	thrust::host_vector<char> h_BWT(n + 1);
+	thrust::device_vector<char> d_BWT;
+	d_BWT = h_BWT;
+	char *shin_pd_BWT = thrust::raw_pointer_cast(&d_BWT[0]);
+	int *shin_pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
+    dim3 block(32, 1);
+    dim3 grid((n + block.x - 1) / block.x, 1);
+	// shin_bwt<<< grid, block >>>(shin_pd_BWT, shin_pd_SA, data, n);
+	puts("aaa");
+	// h_BWT = d_BWT;
+	puts("bbb");
+	printf("T: %s\n", data);
+	printf("SA:\n");
+	for (i = 0; i < n; i++) {
+		printf("%d ", h_SA[i]);
+	}
+	printf("\nBWT:\n");
+	for (i = 0; i < n; i++) {
+		printf("%c", h_BWT[i]);
+	}
+	putchar('\n');
 	// ---------------------------------------------
 
 
