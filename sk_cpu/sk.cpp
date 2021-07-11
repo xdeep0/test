@@ -214,7 +214,8 @@ void suffixArray(int* s, int* SA, int n, int K) {
 
 	if(max_rank < n02)
 	{
-		suffixArray(s12,SA12,n02,max_rank);
+		// shin debug
+		// suffixArray(s12,SA12,n02,max_rank);
 		for(i = 0;  i < n02;  i++)
 			s12[SA12[i]] = i + 1;
 	}else{
