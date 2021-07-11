@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
     dim3 grid((n + block.x - 1) / block.x, 1);
 	shin_bwt<<< grid, block >>>(shin_pd_BWT, shin_pd_SA, data, n);
 	puts("aaa");
-	h_BWT = d_BWT;
+	// h_BWT = d_BWT;
 	puts("bbb");
 	printf("T: %s\n", data);
 	printf("SA:\n");
