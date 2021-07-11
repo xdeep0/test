@@ -95,13 +95,16 @@ int main(int argc, char* argv[])
 
 	// shin bwt parallel ---------------------------
 	// thrust::host_vector<char> h_BWT(n + 1);
+	thrust::device_vector<char> d_T(data, data + n + 1);
 	thrust::device_vector<char> d_BWT(n + 1);
 	// d_BWT = h_BWT;
+	char *pd_T = thrust::raw_pointer_cast(&d_T[0]);
 	char *pd_BWT = thrust::raw_pointer_cast(&d_BWT[0]);
 	int *pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
     dim3 block(8, 1);
     dim3 grid((n + block.x - 1) / block.x, 1);
-	shin_bwt<<< grid, block >>>(data, pd_BWT, pd_SA, n);
+	// shin_bwt<<< grid, block >>>(data, pd_BWT, pd_SA, n);
+	shin_bwt<<<grid, block>>>(pd_T, pd_BWT, pd_SA, n);
 	puts("aaa");
 	thrust::host_vector<char> h_BWT = d_BWT;
 	puts("bbb");
