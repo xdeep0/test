@@ -138,11 +138,14 @@ int main(int argc, char* argv[])
 	inp[i]=0;inp[i+1]=0;inp[i+2]=0;				//prepare for triples
 
     memset(SA,0,sizeof(int)*(n+3));      		//initialize the SA array
+	
+	// shin debug
+	puts("debug 1");
 
 	suffixArray(inp,SA,n,MAX_ALPHA);	        //dc3/skew algorithm
 
 	// shin debug
-	puts("debug 1");
+	puts("debug 2");
 
 	end = clock();								//record the end time
 	runTime = (end - start) / (double) CLOCKS_PER_SEC ;   //run time
