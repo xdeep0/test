@@ -14,7 +14,7 @@ void read_data(char *filename, char *buffer, int num){
 
 // shin parallel BWT
 // __global__ void shin_bwt(thrust::device_vector<char>& BWT, thrust::device_vector<int>& SA, char* T) {
-__global__ void shin_bwt(char* BWT, int* SA, char* T, int n) {
+__global__ void shin_bwt(char *BWT, int *SA, char *T, int n) {
 	int idx = blockIdx.x * blockDim.x + threadIdx.x;
 	if (idx >= n) return;
 	// h_SA[i] == 0 ? '$' : data[h_SA[i]-1]
@@ -98,11 +98,11 @@ int main(int argc, char* argv[])
 	thrust::host_vector<char> h_BWT(n + 1);
 	thrust::device_vector<char> d_BWT;
 	d_BWT = h_BWT;
-	char *shin_pd_BWT = thrust::raw_pointer_cast(&d_BWT[0]);
-	int *shin_pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
+	char *pd_BWT = thrust::raw_pointer_cast(&d_BWT[0]);
+	int *pd_SA = thrust::raw_pointer_cast(&d_SA[0]);
     dim3 block(32, 1);
     dim3 grid((n + block.x - 1) / block.x, 1);
-	shin_bwt<<< grid, block >>>(shin_pd_BWT, shin_pd_SA, data, n);
+	shin_bwt<<< grid, block >>>(pd_BWT, pd_SA, data, n);
 	puts("aaa");
 	h_BWT = d_BWT;
 	puts("bbb");
