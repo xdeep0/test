@@ -3,8 +3,8 @@
 // #include <stdlib.h>
 #include <thrust/host_vector.h>
 #include <thrust/device_vector.h>
-// #include <cuda.h>
-// #include <cuda_runtime.h>
+#include <cuda.h>
+#include <cuda_runtime.h>
 
 // (char* T, char* BWT, int* SA, int n) {
 __global__ void test(char *A, char *B, int *C,int n) {
@@ -18,16 +18,18 @@ int main () {
 	thrust::host_vector<char> h_A(n);
 	thrust::device_vector<char> d_A;
 
-    char *T = (char *)malloc((n + 1) * sizeof(char));
-    for (int i = 0; i < n; i++) {
-        T[i] = "mississippi$"[i];
-    }
+    // char *T = (char *)malloc((n + 1) * sizeof(char));
+    // for (int i = 0; i < n; i++) {
+    //     T[i] = "mississippi$"[i];
+    // }
+    char T[] = "mississippi$";
 
-    int SA_tmp[] = {11,10,7,4,1,0,9,8,6,3,5,2};
-    int *SA = (int *)malloc(n * sizeof(int));
-    for (int i = 0; i < n; i++) {
-        SA[i] = SA_tmp[i];
-    }
+    // int SA_tmp[] = {11,10,7,4,1,0,9,8,6,3,5,2};
+    // int *SA = (int *)malloc(n * sizeof(int));
+    // for (int i = 0; i < n; i++) {
+    //     SA[i] = SA_tmp[i];
+    // }
+    int SA[] = {11,10,7,4,1,0,9,8,6,3,5,2};
 
 	d_A = h_A;
 
