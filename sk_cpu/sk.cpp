@@ -209,9 +209,6 @@ void suffixArray(int* s, int* SA, int n, int K) {
 	// find lexicographic names of triples
 	int max_rank = set_suffix_rank(s,s12,SA12,n02,n0);
 
-	// shin debug
-	puts("debug 3");
-
 	// if max_rank is less than the size of s12, we have a repeat. repeat dc3.
 	// else generate the suffix array of s12 directly
 
@@ -230,6 +227,9 @@ void suffixArray(int* s, int* SA, int n, int K) {
 			s0[j++] = 3*SA12[i];
 
 	radixPass(s0, SA0, s, n0, K);
+
+	// shin debug
+	puts("debug 3");
 
 	// merge sorted SA0 suffixes and sorted SA12 suffixes
 	merge_suffixes(SA0, SA12, SA, s, s12, n0, n1, n02, n);
