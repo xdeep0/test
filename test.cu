@@ -37,7 +37,7 @@ int main () {
 
     dim3 block(8, 1);
     dim3 grid((n + block.x - 1) / block.x, 1);
-	char *pd_B = thrust::raw_pointer_cast(&d_A[0]);
+	char *pd_B = thrust::raw_pointer_cast(&d_B[0]);
 
 	// test<<< grid, block >>>(T, pd_B, SA, n);
     test<<< grid, block >>>(A, pd_B, C, n);
@@ -45,7 +45,7 @@ int main () {
     h_B = d_B;
 
     for (int i = 0; i < n; i++) {
-        printf("%c ", h_A[i]);
+        printf("%c ", h_B[i]);
     }
 
 }
