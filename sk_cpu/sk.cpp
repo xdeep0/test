@@ -115,6 +115,9 @@ int main(int argc, char* argv[])
 	data = (char *) malloc((n+1)*sizeof(char));
 
 	read_data(filename, data, n);				//read data set from the local file
+	// shin insert '$' --------------
+	data[n - 1] = '$';
+	// ------------------------------
 
 	start = clock();							//record the start time
 
@@ -129,11 +132,17 @@ int main(int argc, char* argv[])
 		//inp[i] = data[i];
 	}
 
+	// shin debug
+	puts("debug 0");
+
 	inp[i]=0;inp[i+1]=0;inp[i+2]=0;				//prepare for triples
 
     memset(SA,0,sizeof(int)*(n+3));      		//initialize the SA array
 
 	suffixArray(inp,SA,n,MAX_ALPHA);	        //dc3/skew algorithm
+
+	// shin debug
+	puts("debug 1");
 
 	end = clock();								//record the end time
 	runTime = (end - start) / (double) CLOCKS_PER_SEC ;   //run time
