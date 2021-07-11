@@ -212,6 +212,10 @@ void suffixArray(int* s, int* SA, int n, int K) {
 	// if max_rank is less than the size of s12, we have a repeat. repeat dc3.
 	// else generate the suffix array of s12 directly
 
+	// shin debug -------------
+	printf("max_rank < n02: %d\n", max_rank < n02);
+	// ------------------------
+
 	if(max_rank < n02)
 	{
 		suffixArray(s12,SA12,n02,max_rank);
