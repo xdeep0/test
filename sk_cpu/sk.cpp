@@ -116,7 +116,7 @@ int main(int argc, char* argv[])
 
 	read_data(filename, data, n);				//read data set from the local file
 	// shin insert '$' --------------
-	data[n - 1] = '@';
+	// data[n - 1] = '@';
 	// ------------------------------
 
 	start = clock();							//record the start time
@@ -214,8 +214,7 @@ void suffixArray(int* s, int* SA, int n, int K) {
 
 	if(max_rank < n02)
 	{
-		// shin debug
-		// suffixArray(s12,SA12,n02,max_rank);
+		suffixArray(s12,SA12,n02,max_rank);
 		for(i = 0;  i < n02;  i++)
 			s12[SA12[i]] = i + 1;
 	}else{
