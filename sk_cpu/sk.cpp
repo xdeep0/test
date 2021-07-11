@@ -31,7 +31,7 @@ void merge_suffixes(int * SA0, int * SA12, int * SA, int * s, int * s12, int n0,
 			}
 		}
 		// shin debug
-		printf("k: %d\n", k);
+		printf("k: %d, n: %d\n", k, n);
 	}
 }
 
