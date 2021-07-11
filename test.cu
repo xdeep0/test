@@ -14,7 +14,7 @@ __global__ void test(char *A, char *B, int *C,int n) {
 }
 
 int main () {
-    int n = 12;
+    const int n = 12;
     char A[] = "mississippi$";
 	thrust::host_vector<char> h_B(n);
 	thrust::device_vector<char> d_B;
