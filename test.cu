@@ -3,7 +3,7 @@
 // #include <stdlib.h>
 #include <thrust/host_vector.h>
 #include <thrust/device_vector.h>
-#include <cuda.h>
+// #include <cuda.h>
 // #include <cuda_runtime.h>
 
 // (char* T, char* BWT, int* SA, int n) {
