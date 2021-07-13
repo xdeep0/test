@@ -90,7 +90,7 @@ void radixPass(int* to_be_sorted, int* sorted_suf_arr, int* orig_str, int n, int
 		sorted_suf_arr[3] = tbs;
 		printf(
 			"sorted_suf_arr.length: %d\ncount[os]: %d\n",
-			sizeof(*sorted_suf_arr) / sizeof(int),
+			sizeof(sorted_suf_arr) / sizeof(int),
 			c
 		);
 		// ------------------------------
