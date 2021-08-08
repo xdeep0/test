@@ -1,7 +1,10 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include <iostream>
 #include <vector>
 #include <string>
-#include<time.h>
+#include <time.h>
 
 using namespace std;
 
