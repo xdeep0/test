@@ -35,7 +35,8 @@ int main(int argc, char* argv[])
 	cudaEventCreate(&start);
 	cudaEventCreate(&stop);
 
-	char* filename = "genome.txt";				//load the local data set
+	// char* filename = "genome.txt";				//load the local data set
+	char* filename = "out_upper.txt";  // shin
 
 	int n;										//input size
 

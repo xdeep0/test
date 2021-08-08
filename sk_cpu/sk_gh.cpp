@@ -15,6 +15,7 @@ void radixPass(vector<int>& arr, vector<int>& indices, int offset, int k);
 
 #define getIndex(i, n) (((i) % 3 == 1 ? 0 : ((n)+2)/3) + (i)/3)
 
+// shin ----------------------
 void read_data(char *filename, char *buffer, int num){
 	FILE *fh;
 	fh = fopen(filename, "r");
@@ -22,6 +23,7 @@ void read_data(char *filename, char *buffer, int num){
 	buffer[num] = '\0';
 	fclose(fh);
 }
+// -----------------------------
 
 vector<int> dc3(vector<int>&  arr, int k)  {
     int n = arr.size(), n0 = (n+2)/3, n1 = n0, n2 = n/3, n12 = n1 + n2;
@@ -115,9 +117,10 @@ bool checkEqual(vector<int>& arr, int i, int j, int len) {
 
 
 int main() {
+    // shin add-------------------
     clock_t start, end;
     double runTime;
-    char *filename = "out.txt";
+    char *filename = "out_lower.txt";
     int n;
     char *data;
     printf("Please input the size of dataset you want to evaluate (10 - 1000000): \t");
@@ -125,22 +128,31 @@ int main() {
     data = (char *) malloc((n+1)*sizeof(char));
     read_data(filename, data, n);
     data[n - 1] = '$';
-    start = clock();
-    end = clock();
-    runTime = (end - start) / (double) CLOCKS_PER_SEC ;
-    printf("CPU linear construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, runTime);
-    free(data);
     vector<int> arr(n);
     for (int i = 0; i < n; i++) {
-        arr[i] = (int)data[i] - 65;
+        arr[i] = data[i];
     }
+    // -------------------------------
 
     // vector<int> arr = {'m','i','s','s','i','s','s','i','p','p','i'};
     for (int i = 0; i < arr.size(); ++i) {
         arr[i]-='a';
     }
+
+    start = clock(); // shin
+
     vector<int> sa = dc3(arr, 26);
+
+    // shin ----------------
+    end = clock();
+    runTime = (end - start) / (double) CLOCKS_PER_SEC ;
+    printf("CPU linear construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, runTime);
+    // -------------------------
+
+
     for (int i = 0; i < sa.size(); i++)
         cout << sa[i] << endl;
+
+    free(data);  //shin
     return 0;
 }
