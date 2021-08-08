@@ -130,14 +130,14 @@ int main() {
     data[n - 1] = '$';
     vector<int> arr(n);
     for (int i = 0; i < n; i++) {
-        arr[i] = data[i];
+        arr[i] = (int)(data[i] - 'a');
     }
     // -------------------------------
 
     // vector<int> arr = {'m','i','s','s','i','s','s','i','p','p','i'};
-    for (int i = 0; i < arr.size(); ++i) {
-        arr[i]-='a';
-    }
+    // for (int i = 0; i < arr.size(); ++i) {
+    //     arr[i]-='a';
+    // }
 
     start = clock(); // shin
 
