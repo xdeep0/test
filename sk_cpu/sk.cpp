@@ -83,18 +83,18 @@ void radixPass(int* to_be_sorted, int* sorted_suf_arr, int* orig_str, int n, int
     }
     for (i = 0;  i < n;  i++) {
 		// shin debug -------------------
-		int tbs = to_be_sorted[i];
-		int os = orig_str[tbs];
-		int c = count[os];
-		count[os]++;
-		sorted_suf_arr[3] = tbs;
-		printf(
-			"sorted_suf_arr.length: %d\ncount[os]: %d\n",
-			sizeof(sorted_suf_arr) / sizeof(int),
-			c
-		);
+		// int tbs = to_be_sorted[i];
+		// int os = orig_str[tbs];
+		// int c = count[os];
+		// count[os]++;
+		// sorted_suf_arr[3] = tbs;
+		// printf(
+		// 	"sorted_suf_arr.length: %d\ncount[os]: %d\n",
+		// 	sizeof(sorted_suf_arr) / sizeof(int),
+		// 	c
+		// );
 		// ------------------------------
-        // sorted_suf_arr[count[orig_str[to_be_sorted[i]]]++] = to_be_sorted[i];      // sort
+        sorted_suf_arr[count[orig_str[to_be_sorted[i]]]++] = to_be_sorted[i];      // sort
     }
 }
 
