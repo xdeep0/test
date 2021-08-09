@@ -142,7 +142,7 @@ int main() {
 
     start = clock(); // shin
 
-    vector<int> sa = dc3(arr, 26);
+    vector<int> sa = dc3(arr, 27);
 
     // shin ----------------
     end = clock();
