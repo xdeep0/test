@@ -94,6 +94,7 @@ int main(int argc, char* argv[])
 	// putchar('\n');
 	// ---------------------------------------------
 
+/*
 	// shin bwt parallel ---------------------------
 	// thrust::host_vector<char> h_BWT(n + 1);
 	thrust::device_vector<char> d_T(data, data + n + 1);
@@ -119,6 +120,7 @@ int main(int argc, char* argv[])
 		printf("%c", h_BWT[i]);
 	}
 	putchar('\n');
+	*/
 	// ---------------------------------------------
 
 
