@@ -151,8 +151,15 @@ int main() {
     // -------------------------
 
 
-    for (int i = 0; i < sa.size(); i++)
-        cout << sa[i] << endl;
+    // for (int i = 0; i < sa.size(); i++)
+    //     cout << sa[i] << endl;
+
+    // shin ----------------
+    for (int i = 0; i < n; i++) {
+        printf("%c ", sa[i]);
+    }
+    putchar('\n');
+    // ---------------------
 
     free(data);  //shin
     return 0;
