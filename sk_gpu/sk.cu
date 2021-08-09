@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
 	// ---------------------------------------------
 
 
-	// printf("GPU construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, milliseconds / 1000);
+	printf("GPU construct Suffix Array\nNUM: %d \t Time: %f Sec\n", n, milliseconds / 1000);
 
 	cudaEventDestroy(start);
 	cudaEventDestroy(stop);
