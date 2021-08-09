@@ -29,7 +29,8 @@ int to_i(char c);
 void print_suffix(char *cc, int i);
 //int set_suffix_rank(int *orig_str, int *set_rank_arr, int *sorted_suff_arr, int n02, int n0);
 
-#define MAX_ALPHA 26
+// #define MAX_ALPHA 26
+#define MAX_ALPHA 27  // shin
 
 #define GetI() (SA12[t] < n0 ? SA12[t] * 3 + 1 : (SA12[t] - n0) * 3 + 2)
 
@@ -53,7 +54,8 @@ void print_suffix(char *cc, int i)
 
 int to_i(char c)
 {
-	return (int)c;
+	// return (int)c;
+	return (int)(c - '`');  // shin
 }
 
 

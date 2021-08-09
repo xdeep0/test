@@ -23,7 +23,7 @@ __global__ void shin_bwt(char* T, char* BWT, int* SA, int n) {
 	// } else {
 	// 	BWT[idx] = T[SA[idx] - 1];
 	// }
-	BWT[idx] = SA[idx] == 0 ? '$' : T[SA[idx] - 1];
+	BWT[idx] = SA[idx] == 0 ? '`' : T[SA[idx] - 1];
 }
 
 
@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 
 	read_data(filename, data, n);				//read data set from the local file
 	// shin insert '$' to data ------
-	data[n - 1] = '$';
+	data[n - 1] = '`';
 	// ------------------------------
 
 	thrust::host_vector<int> h_inp(n + 3);
