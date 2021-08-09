@@ -127,12 +127,11 @@ int main() {
     scanf("%d", &n);
     data = (char *) malloc((n+1)*sizeof(char));
     read_data(filename, data, n);
-    data[n - 1] = '$';
+    data[n - 1] = '`';  // '`': 'a' - 1
     vector<int> arr(n);
     for (int i = 0; i < n; i++) {
-        arr[i] = (int)(data[i] - 'b');
+        arr[i] = (int)(data[i] - '`');
     }
-    arr[n-1] = 0;
     // -------------------------------
 
     // vector<int> arr = {'m','i','s','s','i','s','s','i','p','p','i'};
