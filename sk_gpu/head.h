@@ -55,7 +55,7 @@ void print_suffix(char *cc, int i)
 int to_i(char c)
 {
 	// return (int)c;
-	return (int)(c - '`');  // shin
+	return (int)(c - 'A' - 1);  // shin
 }
 
 

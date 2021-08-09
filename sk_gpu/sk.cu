@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 
 	read_data(filename, data, n);				//read data set from the local file
 	// shin insert '$' to data ------
-	data[n - 1] = '`';
+	data[n - 1] = 'A' - 1;
 	// ------------------------------
 
 	thrust::host_vector<int> h_inp(n + 3);
@@ -120,7 +120,7 @@ int main(int argc, char* argv[])
 		printf("%c", h_BWT[i]);
 	}
 	putchar('\n');
-	*/
+*/
 	// ---------------------------------------------
 
 
